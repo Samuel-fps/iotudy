@@ -21,7 +21,7 @@ return new class extends Migration
             $table->boolean('status')->default(0);
 
             // Relation user
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
                   ->references('id')->on('users')
                   ->onDelete('set null');

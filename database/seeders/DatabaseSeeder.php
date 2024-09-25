@@ -2,7 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
+use App\Models\Category;
+use App\Models\Article;
+use App\Models\Comment;
+use Illuminate\Support\Facades\Storage;
+
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,11 +17,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // Eliminate img directories
+        Storage::deleteDirectory('articles');
+        Storage::deleteDirectory('categories');
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // Create directories
+        Storage::makeDirectory('articles');
+        Storage::makeDirectory('categories');
+
+        $this->call(UserSeeder::class);
+
+        Category::factory(5)->create();
+        Article::factory(20)->create();
+        Comment::factory(30)->create();
     }
 }
