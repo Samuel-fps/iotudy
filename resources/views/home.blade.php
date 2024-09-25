@@ -13,8 +13,8 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    {{ __('You are logged in!') }}
+                    <pre>
+                    {{ var_dump($navbar) }}
                 </div>
             </div>
         </div>
