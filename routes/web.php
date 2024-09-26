@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\CategoryController;
 
 Route::get('/', function () {
@@ -21,11 +22,18 @@ Route::resource('categories', CategoryController::class)
                 ->except('show')
                 ->names('categories');
 
+Route::resource('comments', CommentController::class)
+                ->only('index', 'destroy')
+                ->names('comments');
+
 // See article
 Route::get('/articles/{article}', [ArticleController::class], 'show')->name('articles.show');
 
 // See article by category
 Route::get('category/{category}', [CategoryController::class, 'detail'])->name('categories.detail');
+
+// Save comments
+Route::get('/comment', [CommentController::class, 'store'])->name('commnets.store');
 
 Auth::routes();
 

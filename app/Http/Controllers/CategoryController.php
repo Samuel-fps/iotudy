@@ -99,7 +99,7 @@ class CategoryController extends Controller
     }
 
     // filter by category
-    public function detal(Category $category){
+    public function detail(Category $category){
         $articles = Article::where([
             ['category_id', $category->id],
             ['status', '1'],
