@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 
 Route::get('/', function () {
@@ -25,6 +26,10 @@ Route::resource('categories', CategoryController::class)
 Route::resource('comments', CommentController::class)
                 ->only('index', 'destroy')
                 ->names('comments');
+
+Route::resource('profiles', ProfileController::class)
+                ->only('edit', 'update')
+                ->names('profiles');
 
 // See article
 Route::get('/articles/{article}', [ArticleController::class], 'show')->name('articles.show');
