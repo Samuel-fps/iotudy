@@ -8,32 +8,36 @@
     <link rel="icon" href="{{ asset('img/icono.ico') }}">
 
     <!-- Estilos de bootstrap -->
+    @vite('resources/css/app.css')
 
     <!-- Estilos css generales -->
     <link href="{{ asset('css/base/css/general.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/base/css/menu.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/base/css/footer.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/base/css/menu.css')    }}" rel="stylesheet">
+    <link href="{{ asset('css/base/css/footer.css')  }}" rel="stylesheet">
 
     <!-- Estilos cambiantes -->
+     @yield('styles')
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title></title>
+    <title>@yield('title')</title>
 </head>
 
 <body>
 
     <div class="content">
-        <!-- Incluir menú -->
+        @include('layouts.menu')
 
         <section class="section">
-           
+        @yield('content')
         </section>
 
-        <!-- Incluir footer -->
+        <!-- footer -->
+        @include('layouts.footer')
     </div>
-
+    @yield('scripts')
     <!-- Scripts de bootstrap -->
+    @vite('resources/js/app.js')
 </body>
 
 </html>
