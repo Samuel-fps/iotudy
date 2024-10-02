@@ -9,6 +9,7 @@
 @section('content')
 
 <form method="POST" class="form" action="{{ route('login') }}">
+    @csrf
     <h2>Iniciar sesión</h2>
     <div class="content-login">
         <div class="input-content">

@@ -3,7 +3,7 @@
 
         <div class="logo">
             <!--Logo-->
-            <a href="{{ route('home.index') }}"><img src="{{ assets('img/logo.png')}}" alt="Logo"></a>
+            <a href="{{ route('home.index') }}"><img src="{{ asset('img/logo.png')}}" alt="Logo"></a>
         </div>
 
         @guest
