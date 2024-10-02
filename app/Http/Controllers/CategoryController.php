@@ -101,7 +101,8 @@ class CategoryController extends Controller
     // filter by category
     public function detail(Category $category){
 
-        $this->authorize('published($category)');
+        //dd($category);
+        $this->authorize('published', $category);
 
         $articles = Article::where([
             ['category_id', $category->id],

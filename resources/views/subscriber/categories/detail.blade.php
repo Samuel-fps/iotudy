@@ -21,7 +21,7 @@
     <article class="article">
         <img src="{{ asset('storage/' . $article->image) }}" class="img">
         <div class="card-body">
-            <a href="{{ route('articles.show, $article->slug) }}">
+            <a href="{{ route('articles.show', $article->slug) }}">
                 <h2 class="title">{{ Str::limit($article->title, 60, '...') }}</h2>
             </a>
             <p class="introduction">{{ Str::limit($article->introduction, 100, '...') }}</p>

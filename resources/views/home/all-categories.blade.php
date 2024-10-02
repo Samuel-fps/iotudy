@@ -19,7 +19,7 @@
 <div class="article-container">
     <!-- Listar categorías -->
     <article class="article category">
-        <img src="{{ asset('storage/' . $article->image) }}" class="img">
+        <img src="{{ asset('storage/' . $category->image) }}" class="img">
         <div class="card-body">
             <a href="{{ route('categories.detail', $category->slug) }}">
                 <h2 class="title category fs-4">{{ $category->name }}</h2>
@@ -30,7 +30,7 @@
 @endforeach
 
 <div class="links-paginate">
-    {{$ categories->links() }}
+    {{ $categories->links() }}
 </div>
 
 @endsection
