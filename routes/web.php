@@ -15,10 +15,26 @@ Route::get('/all', [HomeController::class, 'all'])->name('home.all');
 // admin
 Route::get('admin', [AdminController::class, 'index'])->name('admin.index');;
 
-Route::resource('articles', ArticleController::class)->names('articles')
+Route::namespace('App\Http\Controllers')->prefix('admin')->group(function(){
+
+    Route::resource('articles', 'ArticleController')
+                    ->except('show')
+                    ->names('articles');
+
+    Route::resource('categories', 'CategoryController')
+                    ->except('show')
+                    ->names('categories');
+
+    Route::resource('comments', 'CommentController')
+                    ->only('index', 'destroy')
+                    ->names('comments');
+
+});
+
+Route::resource('articles', ArticleController::class)
                 ->except('show')
                 ->names('articles');
-;
+
 Route::resource('categories', CategoryController::class)
                 ->except('show')
                 ->names('categories');

@@ -20,7 +20,7 @@ class CategoryController extends Controller
         $category = Category::orderBy('id', 'desc')
                                 ->simplePaginate(8);
         
-        return view('admin.categories.index', compact('categories'));
+        return view('admin.categories.index', compact('category'));
     }
 
     /**
