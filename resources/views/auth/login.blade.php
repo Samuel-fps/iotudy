@@ -1,12 +1,24 @@
-<form method="POST" class="form" action="#">
+@extends('layouts.base')
+
+@section('styles')
+<link rel="stylesheet" href="{{asset('css/login/css/login.css')}}">
+@endsection
+
+@section('title', 'Iniciar sesión')
+
+@section('content')
+
+<form method="POST" class="form" action="{{ route('login') }}">
     <h2>Iniciar sesión</h2>
     <div class="content-login">
         <div class="input-content">
-            <input type="text" name="email" placeholder="Correo eléctronico" value="" autofocus>
+            <input type="text" name="email" placeholder="Correo eléctronico" value="{{ old('email') }}" autofocus>
 
+            @error('email')
             <span class="text-danger">
-                <span>*</span>
+                <span>* {{ $message }}</span>
             </span>
+            @enderror
 
         </div>
 
@@ -20,9 +32,11 @@
         </div>
     </div>
 
-    <a href="#" class="password-reset">Olvidé mi contraseña</a>
+    <a href="{{ route('password.request') }}" class="password-reset">Olvidé mi contraseña</a>
 
     <input type="submit" value="Iniciar sesión" class="button">
 </form>
 
-<p>¿No tienes una cuenta? <a href="#" class="link">Crear cuenta</a></p>
+<p>¿No tienes una cuenta? <a href="{{ route('register') }}" class="link">Crear cuenta</a></p>
+
+@endsection

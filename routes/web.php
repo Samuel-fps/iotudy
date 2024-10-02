@@ -8,11 +8,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home.index');
 Route::get('/all', [HomeController::class, 'all'])->name('home.all');
 
 Route::resource('articles', ArticleController::class)->names('articles')
@@ -38,7 +34,7 @@ Route::get('/articles/{article}', [ArticleController::class], 'show')->name('art
 Route::get('category/{category}', [CategoryController::class, 'detail'])->name('categories.detail');
 
 // Save comments
-Route::get('/comment', [CommentController::class, 'store'])->name('commnets.store');
+Route::post('/comment', [CommentController::class, 'store'])->name('commnets.store');
 
 Auth::routes();
 
