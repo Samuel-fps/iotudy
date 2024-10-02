@@ -1,8 +1,8 @@
 @extends('layouts.base')
 
 @section('styles')
-<link href="{{ asset('css/manage_post/post/css/article_show.css') }}" rel="stylesheet">
-<link href="{{ asset('css/manage_post/post/css/comments.css') }}" rel="stylesheet">
+    @vite('resources/css/manage_post/post/css/article_show.css')
+    @vite('resources/css/manage_post/comments/css/comments.css')
 @endsection
 
 @section('title', 'Artículo')
@@ -20,10 +20,9 @@
     </div>
 
     <div class="post-author line">
-        <img src="{{ $article->user->profile->photo ? asset('storage/' . $article->user->profile->photo) : asset('img/user-default.png' }}" class="img-author">
-
+        <img src="{{ $article->user->profile->photo ? asset('storage/' . $article->user->profile->photo) : asset('img/user-default.png') }}" class="img-author">
         <span>Autor:
-            <a href="{{ $article->user->name }}"></a>
+            <a href="#">{{ $article->user->name }}</a> {{-- Asegúrate de que el enlace tenga un destino válido --}}
         </span>
     </div>
 

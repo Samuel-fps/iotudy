@@ -63,11 +63,11 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        $this->authorize('published', $article);
+        //$this->authorize('published', $article);
 
         $comments = $article->comments()->simplePaginate(5);
 
-        return view('susbcriber.articles.show', compact('article', 'comments'));
+        return view('subscriber.articles.show', compact('article', 'comments'));
     }
 
     /**

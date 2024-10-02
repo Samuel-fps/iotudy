@@ -1,5 +1,5 @@
 @section('styles')
-<link rel="stylesheet" href="{{ asset('css/manage_post/comments/cass/comments.css')}}">
+    @vite('resources/css/manage_post/comments/css/comments.css')
 @endsection
 
 <div class="form-content">

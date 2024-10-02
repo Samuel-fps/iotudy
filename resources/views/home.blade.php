@@ -13,8 +13,6 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <pre>
-                    {{ var_dump($navbar) }}
                 </div>
             </div>
         </div>

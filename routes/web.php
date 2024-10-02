@@ -28,13 +28,13 @@ Route::resource('profiles', ProfileController::class)
                 ->names('profiles');
 
 // See article
-Route::get('/articles/{article}', [ArticleController::class], 'show')->name('articles.show');
+Route::get('/articles/{article}', [ArticleController::class, 'show'])->name('articles.show');
 
 // See article by category
 Route::get('category/{category}', [CategoryController::class, 'detail'])->name('categories.detail');
 
 // Save comments
-Route::post('/comment', [CommentController::class, 'store'])->name('commnets.store');
+Route::post('/comment', [CommentController::class, 'store'])->name('comments.store');
 
 Auth::routes();
 

@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('styles')
-<link rel="stylesheet" href="{{asset('css/login/css/login.css')}}">
+    @vite('resources/css/login/css/login.css')
 @endsection
 
 @section('title', 'Crear cuenta')

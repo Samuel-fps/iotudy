@@ -8,12 +8,11 @@
     <link rel="icon" href="{{ asset('img/icono.ico') }}">
 
     <!-- Estilos de bootstrap -->
-    @vite('resources/css/app.css')
+    @vite(['resources/css/app.css', 
+           'resources/css/base/css/general.css',
+           'resources/css/base/css/menu.css',
+           'resources/css/base/css/footer.css'])
 
-    <!-- Estilos css generales -->
-    <link href="{{ asset('css/base/css/general.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/base/css/menu.css')    }}" rel="stylesheet">
-    <link href="{{ asset('css/base/css/footer.css')  }}" rel="stylesheet">
 
     <!-- Estilos cambiantes -->
      @yield('styles')
@@ -36,6 +35,7 @@
         @include('layouts.footer')
     </div>
     @yield('scripts')
+
     <!-- Scripts de bootstrap -->
     @vite('resources/js/app.js')
 </body>

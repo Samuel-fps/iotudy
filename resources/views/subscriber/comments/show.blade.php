@@ -1,5 +1,3 @@
-
-
 <div class="comments-content">
     @foreach ($comments as $comment)
     <div class="comments-body">

@@ -1,6 +1,6 @@
 <div class="category-container">
     <ul>
-        <li class="nav-item {{ request()->routeIs('home.index') ? 'active' ? ''}}">
+        <li class="nav-item {{ request()->routeIs('home.index') ? 'active' : ''}}">
             <a href="{{ route('home.index') }}">Todo</a></li>         
         
         @foreach ($navbar as $category)
@@ -9,7 +9,7 @@
         </li>
         @endforeach
 
-        <li class="nav-item {{ request()->routeIs('home.all') ? 'active' ? ''}}">
+        <li class="nav-item {{ request()->routeIs('home.all') ? 'active' : ''}}">
             <a href="{{ route('home.all') }}">Todas las categorias</a>
         </li>
 

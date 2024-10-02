@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('index');
     }
 
     /**
@@ -35,7 +35,7 @@ class HomeController extends Controller
                         ['is_featured', '1']
                     ])->paginate(3);
 
-        return view('home', compact('articles', 'navbar'));
+        return view('home.index', compact('articles', 'navbar'));
     }
 
     public function all(){

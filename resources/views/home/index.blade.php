@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('styles')
-    <link rel="stylesheet" href="{{ asset('css/manage_post/categories/css/article_categories.css') }}">
+    @vite('resources/css/manage_post/categories/css/article_category.css')
 @endsection
 
 @section('title', 'Iotudy')
