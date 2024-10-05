@@ -1,11 +1,12 @@
-@extends()
+@extends('layouts.base')
 
 @section('styles')
+    @vite('resources/css/login/css/reset.css')
 @endsection
 
 @section('content')
 
-<form method="POST" class="form" action="#">
+<form method="POST" class="form" action="{{ route('password.email') }}">
     @csrf
     <h2 class="reset-title">Restablecer tu contraseña</h2>
     <p class="alert-send">Escribe tu correo electrónico y te enviaremos las
