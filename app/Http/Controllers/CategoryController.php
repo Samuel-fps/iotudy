@@ -17,10 +17,10 @@ class CategoryController extends Controller
     public function index()
     {
         // Show category admin
-        $category = Category::orderBy('id', 'desc')
+        $categories = Category::orderBy('id', 'desc')
                                 ->simplePaginate(8);
         
-        return view('admin.categories.index', compact('category'));
+        return view('admin.categories.index', compact('categories'));
     }
 
     /**

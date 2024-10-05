@@ -31,7 +31,7 @@ class ArticleController extends Controller
     public function create()
     {
         // Get public categories
-        $categories = Category::select(['id','name'])->where(['status','1'])->get();
+        $categories = Category::select(['id','name'])->where('status','1')->get();
 
         return view('admin.articles.create', compact('categories'));
     }
@@ -63,7 +63,7 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        //$this->authorize('published', $article);
+        $this->authorize('published', $article);
 
         $comments = $article->comments()->simplePaginate(5);
 
@@ -75,8 +75,10 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
+        $this->authorize('view', $article);
+
         // Get public categories
-        $categories = Category::select(['id','name'])->where(['status','1'])->get();
+        $categories = Category::select(['id','name'])->where('status','1')->get();
 
         return view('admin.articles.edit', compact('categories', 'article'));
     }
@@ -86,6 +88,8 @@ class ArticleController extends Controller
      */
     public function update(ArticleRequest $request, Article $article)
     {
+        $this->authorize('update', $article);
+
         // New image
         if($request->hasFile('image')){
             // Delete image
@@ -114,6 +118,8 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
+        $this->authorize('destroy', $article);
+
         // Delete article image
         if($article->image){
             File::delete(public_path('storage/' . $article->image));
