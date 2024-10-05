@@ -1,7 +1,25 @@
-body {
-    background-color: #98b3ff; /* Color de fondo */
-    font-family: Arial, sans-serif; /* Fuente general */
-    color: #333; /* Color del texto */
-    margin: 0;
-    padding: 0;
+.header {
+    background-color: #f8f9fa;
+    padding: 10px;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo img {
+    height: 50px;
+}
+
+.dropdown-toggle {
+    display: flex;
+    align-items: center;
+}
+
+.img-profile {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
 }
