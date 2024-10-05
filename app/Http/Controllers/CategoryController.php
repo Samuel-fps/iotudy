@@ -72,7 +72,7 @@ class CategoryController extends Controller
 
         // Update date
         $category->update([
-            'name' => $request->title,
+            'name' => $request->name,
             'slug' => $request->slug,
             'status' => $request->status,
             'is_featured' => $request->status,
