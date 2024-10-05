@@ -24,7 +24,7 @@ class ProfileRequest extends FormRequest
         return [
             'name' => 'required',
             'email' => 'required',
-            'photo'=> 'nullable|nimes:jpeg,jpg,png',
+            'photo'=> 'nullable|mimes:jpeg,jpg,png',
         ];
     }
 }

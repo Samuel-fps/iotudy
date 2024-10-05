@@ -57,13 +57,3 @@ Route::get('category/{category}', [CategoryController::class, 'detail'])->name('
 Route::post('/comment', [CommentController::class, 'store'])->name('comments.store');
 
 Auth::routes();
-
-/*
-Route::get('/articles', [ArticleController::class], 'index')->name('articles.index');
-Route::get('/articles/create', [ArticleController::class], 'create')->name('articles.create');
-Route::post('/articles', [ArticleController::class], 'store')->name('articles.store');
-
-Route::get('/articles/{article}/edit', [ArticleController::class], 'edit')->name('articles.create');
-Route::put('/articles/{article}', [ArticleController::class], 'update')->name('articles.update');
-Route::delete('/articles/{article}', [ArticleController::class], 'destroy')->name('articles.destroy');
-*/

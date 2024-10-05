@@ -339,6 +339,11 @@ return [
             'icon' => 'fas fa-poll',
             'active' => ['admin/comments*'],
         ],
+        [
+            'text' => 'Ir a web',
+            'route' => 'home.index',
+            'icon' => 'fas fa-home',
+        ],
     ],
 
     /*

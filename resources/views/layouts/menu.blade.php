@@ -15,9 +15,9 @@
         @else
         <div class="dropdown">
             <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" 
-               data-bs-toggle="dropdown" aria-expanded="false">
+               data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
 
-                <img src="{{ Auth::user()->profile->photo ? asset('storage/'. Auth::user()->profile->photo) 
+                <img src="{{ Auth::user()->profile && Auth::user()->profile->photo ? asset('storage/'. Auth::user()->profile->photo) 
                                                          : asset('img/user-default.png') }}" alt="Profile" class="img-profile">
           
                 <span class="name-user">{{ Auth::user()->name }}</span>
@@ -25,7 +25,7 @@
 
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 <li><a class="dropdown-item"
-                        href="#">Perfil</a></li>
+                        href="{{ route('profiles.edit', ['profile' => Auth::user()->id]) }}">Perfil</a></li>
                 
                 <li><a class="dropdown-item" href="{{ route('admin.index') }}">Ir al admin</a></li>
                 
@@ -39,7 +39,6 @@
             </ul>
         </div>
         @endguest
-        </nav>
     </div>
 
 </header>
