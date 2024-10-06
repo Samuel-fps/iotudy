@@ -29,6 +29,10 @@ Route::namespace('App\Http\Controllers')->prefix('admin')->group(function(){
                     ->only('index', 'destroy')
                     ->names('comments');
 
+    Route::resource('users', 'UserController')
+                    ->except('show', 'store', 'show')
+                    ->names('users');
+
 });
 
 Route::resource('articles', ArticleController::class)
