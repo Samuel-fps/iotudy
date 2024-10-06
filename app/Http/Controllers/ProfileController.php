@@ -15,8 +15,9 @@ class ProfileController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(Profile $profile)
-    {
-        //$this->authorize('view', $profile);
+    {   
+        dd($profile);
+        $this->authorize('view', $profile);
         return view('subscriber.profiles.edit', compact('profile'));
     }
 
