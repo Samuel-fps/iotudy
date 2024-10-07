@@ -27,7 +27,7 @@
             @foreach ($roles as $role)
             <div>
                 <label>
-                    <input type="radio" name="role" id="role" value="{{ $role->id }}" {{ $users->roles->containa($role->id) ? 'checked' : '' }}
+                    <input type="radio" name="role" id="role" value="{{ $role->id }}" {{ $user->roles->contains($role->id) ? 'checked' : '' }}
                     class="mr-1 mb-3">
                     {{ $role->name }}
                 </label>
