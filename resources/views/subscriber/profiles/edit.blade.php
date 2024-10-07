@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('styles')
-    @vite('resources/css/user/css/style_user.css')
+    @vite('resources/css/user/profiles/css/style_profile.css')
 @endsection
 
 @section('title', 'Perfil')
@@ -52,10 +52,12 @@
                 <label for="image">Foto de perfil</label> <br>
                 <input type="file" id="photo" accept="image/*" name="photo" class="form-input-file">
 
+                @if($profile->photo)
                 <label>Foto actual</label>
                 <div class="img-article">
-                    <img src="{{ 'storage/' . $profile->photo }}" class="img">
+                    <img src="{{ asset('storage/' . $profile->photo) }}" class="img">
                 </div>
+                @endif
 
                 @error('photo')
                 <span class="text-danger">

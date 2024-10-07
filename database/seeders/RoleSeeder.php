@@ -46,12 +46,22 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'articles.destroy',
                             'description' => 'Delete article'])->syncRoles([$admin, $author]);
         
-        // Coments
+        // Comments
         Permission::create(['name' => 'comments.index',
                             'description' => 'View comment'])->syncRoles([$admin, $author]);
 
         Permission::create(['name' => 'comments.destroy',
                             'description' => 'Delete comment'])->syncRoles([$admin, $author]);
+
+        // Users
+        Permission::create(['name' => 'users.index',
+                            'description' => 'View users'])->assignRole($admin);
+        
+        Permission::create(['name' => 'users.edit',
+                            'description' => 'Edit user'])->assignRole($admin);
+
+        Permission::create(['name' => 'users.destroy',
+                            'description' => 'Delete user'])->assignRole($admin);
 
     }
 }

@@ -340,6 +340,12 @@ return [
             'active' => ['admin/comments*'],
         ],
         [
+            'text' => 'Users',
+            'route' => 'users.index',
+            'icon' => 'fas fa-user',
+            'active' => ['admin/users*'],
+        ],
+        [
             'text' => 'Ir a web',
             'route' => 'home.index',
             'icon' => 'fas fa-home',
