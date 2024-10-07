@@ -317,7 +317,7 @@ return [
         ],
         [
             'text' => 'Dashboard',
-            'url' => 'admin.index',
+            'url' => 'admin',
             'icon' => 'fas fa-pager',
         ],
         ['header' => 'Panel'],
