@@ -10,11 +10,12 @@
 <div class="card">
     <div class="card-body">
         <form method="POST" action="#">
-            
+            @csrf
+            @method('PUT')
             <div class="form-group">
                 <label>Nombre</label>
                 <input type="text" class="form-control" id="name" name='name'
-                        placeholder="Nombre del rol" value="">
+                        placeholder="Nombre del rol" value="{{ $role->name }}">
 
                 @error('name')
                 <span class="alert-red">
@@ -24,14 +25,17 @@
 
             </div>
             <h3>Lista de permisos</h3>
-
+            @foreach ($permissons as $permision)
             <div>
                 <label>
-                    <input type="checkbox" name="permissions[]" id="" value="" 
-                    class="mr-1">
-                   
+                    <input type="checkbox" name="permissions[]" id="" value="{{ $permision->id }}" 
+                    class="mr-1" {{ $role->hasPerimisionTo($permission->name) ? 'checked' : ''}}>
+                    {{ $permision->description }}
+                    
+                    
                 </label>
             </div>
+            @endforeach
 
             <input type="submit" value="Modificar rol" class="btn btn-primary">
         </form>
