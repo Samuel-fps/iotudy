@@ -319,7 +319,6 @@ return [
             'text' => 'Dashboard',
             'url' => 'admin',
             'icon' => 'fas fa-pager',
-            'can' => 'admin.index',
         ],
         ['header' => 'Panel'],
         [

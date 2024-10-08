@@ -127,7 +127,7 @@
 
 @section('js')
 
-    <script src="{{ asset('vendor/jQuery-Plugin-stringToSlug-2.1.0/stringToSlug.jquery.js') }}"></script>
+    <script src="{{ asset('vendor/jQuery-Plugin-stringToSlug-2.1.0/src/jquery.stringToSlug.js') }}"></script>
 
     <script>
         $(document).ready( function() {

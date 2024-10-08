@@ -24,11 +24,11 @@
 
             </div>
             <h3>Lista de permisos</h3>
-            @foreach ($permissions as $pemision)
+            @foreach ($permissions as $permission)
             <div>
                 <label>
-                    <input type="checkbox" name="permissions[]" id="" value="{{ $permision->id }}" class="mr-1">
-                    {{ $permision->description }}
+                    <input type="checkbox" name="permissions[]" id="" value="{{ $permission->id }}" class="mr-1">
+                    {{ $permission->description }}
                 </label>
             </div>
             @endforeach

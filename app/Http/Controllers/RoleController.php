@@ -29,7 +29,7 @@ class RoleController extends Controller
     {
         $permissions = Permission::all();
 
-        return view('admin.roles.create', compact('permisions'));
+        return view('admin.roles.create', compact('permissions'));
     }
 
     public function store(Request $request)
@@ -52,7 +52,7 @@ class RoleController extends Controller
     {
         $permissions = Permission::all();
 
-        return view('admin.roles.edit', compact('permisions', 'roles'));
+        return view('admin.roles.edit', compact('permissions', 'role'));
     }
 
     /**
@@ -79,7 +79,7 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
-        $role->delete;
+        $role->delete();
 
         return redirect()->action([RoleController::class, 'index'])
                          ->with('success-delete', 'Rol eliminado con éxito');

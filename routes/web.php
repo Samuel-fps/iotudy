@@ -9,12 +9,13 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 
+// Public
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
 Route::get('/all', [HomeController::class, 'all'])->name('home.all');
 
 // admin
 Route::get('/admin', [AdminController::class, 'index'])
-                    ->middleware('can.admin.index')
+                    ->middleware('can:admin.index')
                     ->name('admin.index');
 
 Route::namespace('App\Http\Controllers')->prefix('admin')->group(function(){
@@ -38,7 +39,6 @@ Route::namespace('App\Http\Controllers')->prefix('admin')->group(function(){
     Route::resource('roles', 'RoleController')
                     ->except('show')
                     ->names('roles');
-
 });
 
 Route::resource('articles', ArticleController::class)

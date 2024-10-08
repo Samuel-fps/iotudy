@@ -8,6 +8,16 @@
 
 @section('content')
 
+@if(session('success-create'))
+    <div class="alert alert-info">
+        {{ session('success-create') }}
+    </div>
+@elseif(session('success-delete'))
+    <div class="alert alert-info">
+        {{ session('success-delete') }}
+    </div>
+@endif
+
 <div class="card">
     <div class="card-header">
         <a class="btn btn-primary" href="{{ route('roles.create') }}">Crear rol</a>
@@ -23,12 +33,12 @@
             </thead>
 
             <tbody>
-                @foreach ($roles as $roles)
+                @foreach ($roles as $role)
                 <tr>
-                    <td>{{ $roles->id }}</td>
+                    <td>{{ $role->id }}</td>
                     <td>{{ $role->name }}</td>
 
-                    <td width="10px"><a href="{{ route('roles.edit', $roles) }}" class="btn btn-primary btn-sm mb-2">Editar</a></td>
+                    <td width="10px"><a href="{{ route('roles.edit', $role) }}" class="btn btn-primary btn-sm mb-2">Editar</a></td>
 
                     <td width="10px">
                         <form action="{{ route('roles.destroy', $role) }}" method="POST">

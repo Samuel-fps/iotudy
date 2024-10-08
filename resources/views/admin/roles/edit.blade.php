@@ -9,7 +9,7 @@
 @section('content')
 <div class="card">
     <div class="card-body">
-        <form method="POST" action="#">
+        <form method="POST" action="{{ route('roles.update', $role->id) }}">
             @csrf
             @method('PUT')
             <div class="form-group">
@@ -25,12 +25,12 @@
 
             </div>
             <h3>Lista de permisos</h3>
-            @foreach ($permissons as $permision)
+            @foreach ($permissions as $permission)
             <div>
                 <label>
-                    <input type="checkbox" name="permissions[]" id="" value="{{ $permision->id }}" 
-                    class="mr-1" {{ $role->hasPerimisionTo($permission->name) ? 'checked' : ''}}>
-                    {{ $permision->description }}
+                    <input type="checkbox" name="permissions[]" id="" value="{{ $permission->id }}" 
+                    class="mr-1" {{ $role->hasPermissionTo($permission->name) ? 'checked' : ''}}>
+                    {{ $permission->description }}
                     
                     
                 </label>
