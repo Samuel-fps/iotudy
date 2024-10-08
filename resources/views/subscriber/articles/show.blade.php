@@ -32,7 +32,7 @@
         <img src="{{ asset('storage/' . $article->image) }}" alt="imagen" class="post-image-img">
     </div>
 
-    <div class="post-body line">{{!! $article->body !!}}</div>
+    <div class="post-body line">{!! $article->body !!}</div>
     <hr>
 </div>
 
