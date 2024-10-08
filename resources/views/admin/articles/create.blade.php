@@ -11,7 +11,7 @@
 <div class="card">
     <div class="card-body">
         <form method="POST" action="{{ route('articles.store') }}" enctype="multipart/form-data">
-
+            @csrf
             <div class="form-group">
                 <label for="">Título</label>
                 <input type="text" class="form-control" id="title" name='title'
@@ -138,25 +138,5 @@
             });
         });
     </script>
-
-    <script src="{{ asset('ckeditor5-43.2.0/ckeditor5/ckeditor5.js') }}"></script>
-
-    <script>
-            ClassicEditor
-                .create( document.querySelector( '#body' ), {
-                    toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote' ],
-                    heading: {
-                        options: [
-                            { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
-                            { model: 'heading1', title: 'Heading 1', class: 'ck-heading_heading1' },
-                            { model: 'heading2', title: 'Heading 2', class: 'ck-heading_heading2' },
-                            { model: 'heading3', title: 'Heading 3', class: 'ck-heading_heading3' }
-                        ]
-                    }
-                })
-                .catch( error => {
-                    console.error( error );
-                });
-        </script>
 
 @endsection

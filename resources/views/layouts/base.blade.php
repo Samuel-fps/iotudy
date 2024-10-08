@@ -11,7 +11,10 @@
     @vite(['resources/css/app.css', 
            'resources/css/base/css/general.css',
            'resources/css/base/css/menu.css',
-           'resources/css/base/css/footer.css'])
+           'resources/css/base/css/footer.css'
+    ])
+
+    <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/theme.css">
 
 
     <!-- Estilos cambiantes -->

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -50,6 +51,7 @@ class ArticleController extends Controller
      */
     public function store(ArticleRequest $request)
     {
+        Log::info('Request data:', $request->all());
         $request->merge(
             ['user_id' => Auth::user()->id,]
         );

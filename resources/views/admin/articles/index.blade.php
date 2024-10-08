@@ -12,15 +12,15 @@
 
 @if(session('success.create'))
     <div class="alert alert-info">
-        {{ session('success.create') }}
+        {{ session('success-create') }}
     </div>
 @elseif(session('success.update'))
     <div class="alert alert-info">
-        {{ session('success.update') }}
+        {{ session('success-update') }}
     </div>
 @elseif(session('success.delete'))
     <div class="alert alert-info">
-        {{ session('success.delete') }}
+        {{ session('success-delete') }}
     </div>
 @endif
 
