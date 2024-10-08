@@ -127,3 +127,23 @@
 </div>
 @endsection
 
+@section('js')
+
+<script>
+    $(document).ready(function() {
+        $('#title').on('keyup keydown blur', function() {
+            // Obtener el valor del título
+            var title = $(this).val();
+            // Reemplazar espacios y caracteres especiales
+            var slug = title.toLowerCase()
+                .replace(/[^a-z0-9 -]/g, '') // eliminar caracteres no válidos
+                .trim()
+                .replace(/\s+/g, '-') // reemplazar espacios por guiones
+                .replace(/-+/g, '-'); // reemplazar múltiples guiones por uno solo
+            // Asignar el slug al campo correspondiente
+            $('#slug').val(slug);
+        });
+    });
+</script>
+
+@endsection
