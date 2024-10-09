@@ -20,7 +20,8 @@
     </div>
 
     <div class="post-author line">
-        <img src="{{ Auth::user()->profile && Auth::user()->profile->photo ? $article->user->profile->photo : asset('img/user-default.png') }}" class="img-author">
+        <img src="{{ Auth::check() ? Auth::user()->getProfilePhoto() : asset('img/user-default.png') }}" class="img-author">
+
         <span>Autor:
             <a href="#">{{ $article->user->name }}</a>
         </span>
