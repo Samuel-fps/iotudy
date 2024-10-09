@@ -7,6 +7,8 @@
     "require": {
         "php": "^8.1",
         "ext-pdo_mysql": "*",
+        "cloudinary-labs/cloudinary-laravel": "^2.2",
+        "components/jquery": "^3.7",
         "fakerphp/faker": "^1.23",
         "jeroennoten/laravel-adminlte": "^3.13",
         "laravel/framework": "^11.9",

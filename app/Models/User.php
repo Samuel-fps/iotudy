@@ -71,8 +71,17 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class);
     }
 
+    public function getProfilePhoto(){
+        return optional($this->profile)->photo ?? asset('img/user-default.png');
+    }
+
     public function adminlte_image(){
-        return asset('storage/' . Auth::user()->profile->photo);
+        return $this->getProfilePhoto();
+    }
+
+    public function adminlte_profile_url()
+    {
+        return route('profiles.edit', $this->id);
     }
 
 }

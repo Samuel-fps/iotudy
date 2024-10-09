@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\ProfileRequest;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class ProfileController extends Controller
 {
@@ -31,20 +32,32 @@ class ProfileController extends Controller
      */
     public function update(ProfileRequest $request, Profile $profile)
     {
-        //$this->authorize('update', $profile);
+        $this->authorize('update', $profile);
         $user = Auth::user();
+        $current_photo = $profile->photo;
+        
+        if ($current_photo) {
+            $split_url = explode('/', $current_photo);
+            $public_id = explode('.', end($split_url))[0];
+        } else {
+            $public_id = null; // O algún valor por defecto si no hay foto
+        }
+
+        $photo = $current_photo;
 
         if($request->hasFile('photo')){
-           // Delete image
-            File::delete(public_path('storage/' . $profile->photo));
-            // Set new image
-            $photo = $request['photo']->store('profiles');
+            Cloudinary::destroy('profiles/' . $public_id[0]);
+            // Set new photo
+            $photo = Cloudinary::upload($request->file('photo')
+            ->getRealPath(),[
+                'folder' => 'profiles',
+            ])->getSecurePath();
         } 
         else{
             $photo = $user->profile->photo;
         }
 
-        // Set nae, email and photo
+        // Set name, email and photo
         $user->name = $request->name;
         $user->email = $request->email;
         $user->profile->photo = $photo;

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\CategoryRequest;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class CategoryController extends Controller
 {
@@ -49,7 +50,10 @@ class CategoryController extends Controller
         
         // Validate file in request
         if($request->hasFile('image')){
-            $category['image'] = $request->file('image')->store('categories');
+            $category['image'] = Cloudinary::upload($request->file('image')
+            ->getRealPath(),[
+                'folder' => 'categories',
+            ])->getSecurePath();
         }
 
         Category::create($category);
@@ -72,11 +76,19 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         // New image
+        $current_image = $category->image;
+        $split_url = explode('/', $current_image);
+        $public_id = explode('.', $split_url[sizeof($split_url)-1]);
+
+        // New image
         if($request->hasFile('image')){
             // Delete image
-            File::delete(public_path('storage/' . $category->image));
+            Cloudinary::destroy('categories/' . $public_id[0]);
             // Set new image
-            $category['image'] = $request->file('image')->store('categories');
+            $article['image'] = Cloudinary::upload($request->file('image')
+            ->getRealPath(),[
+                'folder' => 'categories',
+            ])->getSecurePath();
         }
 
         // Update date
@@ -96,9 +108,14 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        $current_image = $category->image;
+        $split_url = explode('/', $current_image);
+        $public_id = explode('.', $split_url[sizeof($split_url)-1]);
+
+
         // Delete category image
         if($category->image){
-            File::delete(public_path('storage/' . $category->image));
+            Cloudinary::destroy('categories/' . $public_id[0]);
         }
 
         $category->delete();

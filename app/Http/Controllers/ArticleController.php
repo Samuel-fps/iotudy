@@ -10,6 +10,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\ArticleRequest;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+use Illuminate\Contracts\Filesystem\Cloud;
 
 class ArticleController extends Controller
 {
@@ -51,7 +53,6 @@ class ArticleController extends Controller
      */
     public function store(ArticleRequest $request)
     {
-        Log::info('Request data:', $request->all());
         $request->merge(
             ['user_id' => Auth::user()->id,]
         );
@@ -60,7 +61,10 @@ class ArticleController extends Controller
         
         // Validate file in request
         if($request->hasFile('image')){
-            $article['image'] = $request->file('image')->store('articles');
+            $article['image'] = Cloudinary::upload($request->file('image')
+            ->getRealPath(),[
+                'folder' => 'aricles',
+            ])->getSecurePath();
         }
 
         Article::create($article);
@@ -101,12 +105,19 @@ class ArticleController extends Controller
     {
         $this->authorize('update', $article);
 
+        $current_image = $article->image;
+        $split_url = explode('/', $current_image);
+        $public_id = explode('.', $split_url[sizeof($split_url)-1]);
+
         // New image
         if($request->hasFile('image')){
             // Delete image
-            File::delete(public_path('storage/' . $article->image));
+            Cloudinary::destroy('articles/' . $public_id[0]);
             // Set new image
-            $article['image'] = $request->file('image')->store('articles');
+            $article['image'] = Cloudinary::upload($request->file('image')
+            ->getRealPath(),[
+                'folder' => 'articles',
+            ])->getSecurePath();
         }
 
         // Update date
@@ -131,9 +142,13 @@ class ArticleController extends Controller
     {
         $this->authorize('destroy', $article);
 
+        $current_image = $article->image;
+        $split_url = explode('/', $current_image);
+        $public_id = explode('.', $split_url[sizeof($split_url)-1]);
+
         // Delete article image
         if($article->image){
-            File::delete(public_path('storage/' . $article->image));
+            Cloudinary::destroy('articles/' . $public_id[0]);
         }
 
         $article->delete();

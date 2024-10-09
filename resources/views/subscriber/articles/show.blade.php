@@ -20,7 +20,8 @@
     </div>
 
     <div class="post-author line">
-        <img src="{{ Auth::user()->profile && Auth::user()->profile->photo ? asset('storage/' . $article->user->profile->photo) : asset('img/user-default.png') }}" class="img-author">
+        <img src="{{ Auth::check() ? Auth::user()->getProfilePhoto() : asset('img/user-default.png') }}" class="img-author">
+
         <span>Autor:
             <a href="#">{{ $article->user->name }}</a>
         </span>
@@ -29,7 +30,7 @@
     <hr>
 
     <div class="post-image">
-        <img src="{{ asset('storage/' . $article->image) }}" alt="imagen" class="post-image-img">
+        <img src="{{ $article->image }}" alt="imagen" class="post-image-img">
     </div>
 
     <div class="post-body line">{!! $article->body !!}</div>
