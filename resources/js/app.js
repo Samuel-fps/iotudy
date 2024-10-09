@@ -1,15 +1,10 @@
-// resources/js/app.js
-import 'bootstrap/dist/css/bootstrap.min.css'; // Importar Bootstrap
+import $ from 'jquery'; // Importar jQuery
+window.$ = window.jQuery = $; // Asignar jQuery al objeto window
+
+import 'bootstrap/dist/css/bootstrap.min.css'; // Importar CSS de Bootstrap
 import 'bootstrap'; // Importar JavaScript de Bootstrap
-import '../css/app.css';
+import '../css/app.css'; // Tu archivo CSS
 
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-
-ClassicEditor
-    .create(document.querySelector('#body'))
-    .then(editor => {
-        window.editor = editor;
-    })
-    .catch(error => {
-        console.error(error);
-    });
+$(document).ready(function() {
+    console.log('jQuery está funcionando correctamente!');
+});

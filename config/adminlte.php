@@ -136,9 +136,9 @@ return [
     'usermenu_enabled' => true,
     'usermenu_header' => false,
     'usermenu_header_class' => 'bg-primary',
-    'usermenu_image' => true,
+    'usermenu_image' => false,
     'usermenu_desc' => false,
-    'usermenu_profile_url' => 'profile->photo',
+    'usermenu_profile_url' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -257,7 +257,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'admin',
+    'dashboard_url' => 'home',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -317,49 +317,38 @@ return [
         ],
         [
             'text' => 'Dashboard',
-            'url' => 'admin',
-            'icon' => 'fas fa-pager',
+            'route' => 'admin.index',
+            'icon' => 'fas fa-home',
         ],
-        ['header' => 'Panel'],
+        ['header' => 'Opciones'],
         [
-            'text' => 'Categorias',
-            'route' => 'categories.index',
-            'icon' => 'fas fa-poll',
-            'active' => ['admin/categories*'],
-            'can' => 'articles.index',
-        ],
-        [
-            'text' => 'Articulos',
+            'text' => 'Artículos',
             'route' => 'articles.index',
-            'icon' => 'fas fa-poll',
-            'active' => ['admin/articles*'],
-            'can' => 'categories.index',
+            'icon' => 'fas fa-newspaper',
+            'active' => ['articles*'],
+        ],
+        [
+            'text' => 'Categories',
+            'route' => 'categories.index',
+            'icon' => 'fas fa-list',
+            'active' => ['categories*'],
         ],
         [
             'text' => 'Comentarios',
             'route' => 'comments.index',
-            'icon' => 'fas fa-poll',
-            'active' => ['admin/comments*'],
-            'can' => 'comments.index',
+            'icon' => 'fas fa-comment',
+            'active' => ['comments*'],
         ],
         [
-            'text' => 'Users',
+            'text' => 'Usuarios',
             'route' => 'users.index',
             'icon' => 'fas fa-user',
-            'active' => ['admin/users*'],
-            'can' => 'users.index',
+            'active' => ['users*'],
         ],
         [
-            'text' => 'Roles',
-            'route' => 'roles.index',
-            'icon' => 'fas fa-lock',
-            'active' => ['admin/roles*'],
-            'can' => 'roles.index',
-        ],
-        [
-            'text' => 'Ir a web',
+            'text' => 'Volver a web',
             'route' => 'home.index',
-            'icon' => 'fas fa-home',
+            'icon' => 'fas fa-arrow-left',
         ],
     ],
 
