@@ -5,7 +5,8 @@
     "keywords": ["laravel", "framework"],
     "license": "MIT",
     "require": {
-        "php": "^8.2",
+        "php": "^8.1",
+        "ext-pdo_mysql": "*",
         "fakerphp/faker": "^1.23",
         "jeroennoten/laravel-adminlte": "^3.13",
         "laravel/framework": "^11.9",
