@@ -59,7 +59,7 @@
                 <input type="file" class="form-control-file mb-2" id="image" name='image'>
 
                 <div class="rounded mx-auto d-block">
-                    <img src="{{ asset('storage/' . $article->image) }}" style="width: 250px">
+                    <img src="{{ $article->image }}" style="width: 250px">
                 </div>
 
                 @error('image')

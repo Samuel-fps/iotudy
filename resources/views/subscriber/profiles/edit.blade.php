@@ -55,7 +55,7 @@
                 @if($profile->photo)
                 <label>Foto actual</label>
                 <div class="img-article">
-                    <img src="{{ asset('storage/' . $profile->photo) }}" class="img">
+                    <img src="{{ $profile->photo }}" class="img">
                 </div>
                 @endif
 
