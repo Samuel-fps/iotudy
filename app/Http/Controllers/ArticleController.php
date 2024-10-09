@@ -53,7 +53,6 @@ class ArticleController extends Controller
      */
     public function store(ArticleRequest $request)
     {
-        Log::info('Request data:', $request->all());
         $request->merge(
             ['user_id' => Auth::user()->id,]
         );
